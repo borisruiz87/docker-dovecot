@@ -13,6 +13,6 @@ EXPOSE 110 143 993 995
 
 VOLUME [/etc/dovecot /srv/vmail]
 
-CMD ["/usr/sbin/dovecot" "-F"]
+CMD ["/usr/sbin/dovecot", "-F"]
 
 
