@@ -11,7 +11,7 @@ RUN adduser -H -D -s /sbin/nologin vmail && mkdir /srv/vmail && chown vmail:vmai
 
 EXPOSE 110 143 993 995
 
-VOLUME [/etc/dovecot /srv/vmail]
+VOLUME [/etc/dovecot, /srv/vmail]
 
 CMD ["/usr/sbin/dovecot", "-F"]
 
