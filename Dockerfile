@@ -15,7 +15,7 @@ RUN adduser -H -D -s /sbin/nologin vmail && mkdir /srv/vmail && chown vmail:vmai
 # creando usuario postfix
 #RUN adduser -H -D -s /sbin/nologin postfix
 
-EXPOSE 110 143 993 995
+EXPOSE 110 143 993 995 12345
 
 VOLUME ["/etc/dovecot", "/srv/vmail"]
 
