@@ -12,6 +12,9 @@ COPY *.key /etc/ssl/dovecot/
 # creando usuario vmail y creando directorio para los correos
 RUN adduser -H -D -s /sbin/nologin vmail && mkdir /srv/vmail && chown vmail:vmail /srv/vmail && chmod 770 /srv/vmail
 
+# creando usuario postfix
+RUN adduser -H -D -s /sbin/nologin postfix
+
 EXPOSE 110 143 993 995
 
 VOLUME ["/etc/dovecot", "/srv/vmail"]
