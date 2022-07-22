@@ -13,7 +13,7 @@ COPY *.key /etc/ssl/dovecot/
 RUN adduser -H -D -s /sbin/nologin vmail && mkdir /srv/vmail && chown vmail:vmail /srv/vmail && chmod 770 /srv/vmail
 
 # creando usuario postfix
-RUN adduser -H -D -s /sbin/nologin postfix
+#RUN adduser -H -D -s /sbin/nologin postfix
 
 EXPOSE 110 143 993 995
 
