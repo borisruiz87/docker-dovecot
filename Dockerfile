@@ -14,7 +14,7 @@ RUN addgroup -g 5000 vmail && adduser -H -D -G vmail -u 5000 -s /sbin/nologin vm
 
 EXPOSE 110 143 993 995 12345
 
-VOLUME ["/etc/dovecot", "/srv/vmail"]
+VOLUME ["/srv/vmail"]
 
 CMD ["/usr/sbin/dovecot", "-F"]
 
