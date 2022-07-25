@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # instalando dovecot
-RUN apk --no-cache add bash dovecot busybox-extras && rm -rf /var/cache/apk/*
+RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd && rm -rf /var/cache/apk/*
  
 # adicionando los archivos de configuracion para etc
 COPY *.conf /etc/dovecot/conf.d/
