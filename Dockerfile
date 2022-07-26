@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # instalando dovecot
-RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd && rm -rf /var/cache/apk/*
+RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd rsyslog && rm -rf /var/cache/apk/*
  
 # adicionando los archivos de configuracion para etc
 COPY *.conf /etc/dovecot/conf.d/
@@ -14,8 +14,8 @@ RUN addgroup -g 5000 vmail && adduser -H -D -G vmail -u 5000 -s /sbin/nologin vm
 
 EXPOSE 110 143 993 995 12345 24
 
-VOLUME ["/etc/dovecot", "/srv/vmail"]
+VOLUME ["/etc/dovecot", "/srv/vmail", "/var/log/"]
 
-CMD ["/usr/sbin/dovecot", "-F"]
+CMD ["sh","-c","rsyslogd -n && /usr/sbin/dovecot -F"]
 
 
