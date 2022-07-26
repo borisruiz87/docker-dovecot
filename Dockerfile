@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # instalando dovecot
-RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd rsyslog && rm -rf /var/cache/apk/*
+RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd rsyslog supervisor && rm -rf /var/cache/apk/*
  
 # adicionando los archivos de configuracion para etc
 COPY *.conf /etc/dovecot/conf.d/
@@ -16,6 +16,10 @@ EXPOSE 110 143 993 995 12345 24
 
 VOLUME ["/etc/dovecot", "/srv/vmail", "/var/log/"]
 
-CMD ["sh","-c","rsyslogd -n && /usr/sbin/dovecot -F"]
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["sh","-c","/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
+
+#CMD ["sh","-c","rsyslogd -n && /usr/sbin/dovecot -F"]
 
 
