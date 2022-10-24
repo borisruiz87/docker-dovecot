@@ -14,7 +14,7 @@ RUN addgroup -g 5000 vmail && adduser -H -D -G vmail -u 5000 -s /sbin/nologin vm
 
 EXPOSE 110 143 993 995 12345 24
 
-VOLUME ["/etc/dovecot", "/srv/vmail", "/var/log/"]
+VOLUME ["/etc/dovecot/users", "/srv/vmail", "/var/log/"]
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
