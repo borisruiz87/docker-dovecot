@@ -18,7 +18,7 @@ RUN  cp /usr/share/zoneinfo/Cuba /etc/localtime
 # creando el grupo y el usuario vmail y creando directorio para los correos
 RUN addgroup -g 5000 vmail && adduser -H -D -G vmail -u 5000 -s /sbin/nologin vmail && mkdir /srv/vmail && chown vmail:vmail /srv/vmail && chmod 770 /srv/vmail
 
-EXPOSE 110 143 993 995 12345 24 12340
+EXPOSE 110 143 12345 24 12340
 
 VOLUME ["/etc/dovecot/", "/srv/vmail", "/var/log/"]
 
