@@ -5,7 +5,7 @@ RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd rsyslog tzdata 
  
 # adicionando los archivos de configuracion para etc
 COPY ./conf/*.conf /etc/dovecot/conf.d/
-COPY users /etc/dovecot/
+# COPY users /etc/dovecot/
 COPY ./ssl/* /etc/ssl/dovecot/
 COPY quota-warning.sh /usr/local/bin/
 
@@ -20,7 +20,7 @@ RUN addgroup -g 5000 vmail && adduser -H -D -G vmail -u 5000 -s /sbin/nologin vm
 
 EXPOSE 110 143 12345 24 12340
 
-VOLUME ["/etc/dovecot/", "/srv/vmail", "/var/log/"]
+VOLUME ["/srv/vmail", "/var/log/"]
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
