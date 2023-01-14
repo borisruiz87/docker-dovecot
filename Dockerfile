@@ -4,7 +4,7 @@ FROM alpine:latest
 RUN apk --no-cache add bash dovecot busybox-extras dovecot-lmtpd rsyslog tzdata supervisor && rm -rf /var/cache/apk/*
  
 # adicionando los archivos de configuracion para etc
-COPY ./conf/*.conf /etc/dovecot/conf.d/
+COPY ./conf/* /etc/dovecot/conf.d/
 COPY ./ssl/* /etc/ssl/dovecot/
 COPY quota-warning.sh /usr/local/bin/
 
